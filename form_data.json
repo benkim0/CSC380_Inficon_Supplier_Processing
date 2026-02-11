@@ -1,0 +1,38 @@
+[
+  {
+    "form_question_id": "F1",
+    "question_text": "What is the Company Called?",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F2",
+    "question_text": "What is the Address?",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F3",
+    "question_text": "What City is the Company located in?",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F4",
+    "question_text": "Which state is the company located in?",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F5",
+    "question_text": "Name of the CEO",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F6",
+    "question_text": "Is this an Ethnically Owned Company?",
+    "field_type": "checkbox"
+  },
+  {
+    "form_question_id": "F7",
+    "question_text": "Does this company sponsor visas?",
+    "field_type": "checkbox"
+  }
+]
+

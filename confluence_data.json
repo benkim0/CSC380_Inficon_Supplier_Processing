@@ -25,8 +25,38 @@
   },
   {
     "question_id": "Q5",
-    "question_text": "Is the supplier ISO certified?",
-    "answer_text": "Yes",
+    "question_text": "Are we a minority owned company?",
+    "answer_text": "No",
     "field_type": "checkbox"
+  },
+  {
+    "question_id": "Q6",
+    "question_text": "What types of products do we sell?",
+    "answer_text": "Semiconductors, Batteries, etc.",
+    "field_type": "checkbox"
+  },
+  {
+    "question_id": "Q7",
+    "question_text": "What is the Company Phone Number",
+    "answer_text": "315-111-1111",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q8",
+    "question_text": "Who is the Company CEO",
+    "answer_text": "Oliver Wyrsch",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q9",
+    "question_text": "Number of Employees",
+    "answer_text": "1,685",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q10",
+    "question_text": "Sales Revenue",
+    "answer_text": "671,000,000",
+    "field_type": "text"
   }
 ]

@@ -1,7 +1,7 @@
 import pandas as pd
 
 #loading data from confluence
-def load_data(filepath):
+def load_confluence_data(filepath):
     df = pd.read_json(filepath)
 
     #cleaning
@@ -16,6 +16,18 @@ def load_data(filepath):
         df["answer_text"]
         .str.strip()
     )
+    return df
+
+def load_form_data(filepath):
+    df = pd.read_json(filepath)
+
+    #cleaning
+    df["question_text"] = (
+        df["question_text"]
+        .str.strip()
+        .str.lower()
+    )
+
     return df
 
 #question list
