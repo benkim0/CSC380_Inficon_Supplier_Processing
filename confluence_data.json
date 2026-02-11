@@ -1,0 +1,32 @@
+[
+  {
+    "question_id": "Q1",
+    "question_text": "What is the name of the Company",
+    "answer_text": "Inficon Inc.",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q2",
+    "question_text": "What is the Company Address",
+    "answer_text": "2 Technology Place",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q3",
+    "question_text": "What City is the Company in?",
+    "answer_text": "East Syracuse",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q4",
+    "question_text": "What State is the Company in?",
+    "answer_text": "New York",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q5",
+    "question_text": "Is the supplier ISO certified?",
+    "answer_text": "Yes",
+    "field_type": "checkbox"
+  }
+]

@@ -5,22 +5,28 @@ from vector_embedding_model import (
     find_match
 )
 
+from database import (
+    load_data,
+    get_questions_list,
+    get_row_index
+)
+
 
 if __name__ == "__main__":
     model = load_embedding_model()
 
-    confluence_questions = [
-        "What is the name of the Company",
-        "What is the Company Address"
-    ]
+    df = load_data("confluence_data.json")
+    confluence_questions = get_questions_list(df)
+    confluence_embeddings = embed_texts(model, confluence_questions)
 
-    form_question = "Where is the company located?"
+    form_question = "What state is the company located in?"
 
-    conf_embeddings = embed_texts(model, confluence_questions)
     form_embedding = embed_texts(model, [form_question])[0]
 
-    scores = compute_similarity(form_embedding, conf_embeddings)
+    scores = compute_similarity(form_embedding, confluence_embeddings)
     best_idx, best_score = find_match(scores)
+    matched_row = get_row_index(df, best_idx)
 
-    print("Best match:", confluence_questions[best_idx])
+    print("Best match:", matched_row["question_text"])
+    print("Answer:", matched_row["answer_text"])
     print("Score:", round(best_score, 3))

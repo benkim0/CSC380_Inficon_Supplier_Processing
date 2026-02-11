@@ -1,0 +1,28 @@
+import pandas as pd
+
+#loading data from confluence
+def load_data(filepath):
+    df = pd.read_json(filepath)
+
+    #cleaning
+    df["question_text"] = (
+        df["question_text"]
+        .str.strip()
+        .str.lower()
+    )
+
+    #cleaning
+    df["answer_text"] = (
+        df["answer_text"]
+        .str.strip()
+    )
+    return df
+
+#question list
+def get_questions_list(df):
+    return df["question_text"].tolist()
+
+#index list
+def get_row_index(df, index):
+    return df.iloc[index]
+
