@@ -3,7 +3,7 @@ from sentence_transformers import SentenceTransformer
 from sklearn .metrics.pairwise import cosine_similarity
 import numpy as np
 
-model_name = "all-mpnet-base-v2"
+model_name = "BAAI/bge-large-en-v1.5"
 
 #loading the embedding model
 def load_embedding_model():

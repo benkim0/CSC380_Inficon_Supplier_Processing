@@ -1,5 +1,5 @@
 from vector_embedding_model import load_embedding_model
-from database_handler import load_form_data, load_confluence_data
+from Python.database_handler import load_form_data, load_confluence_data
 from similarity_test import match_questions
 
 
@@ -11,7 +11,7 @@ def main():
         model = model,
         form_df = form_df,
         conf_df = conf_df,
-        threshold=0.8
+        threshold=0.80
     )
 
     print("\nResults:\n")

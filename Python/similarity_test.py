@@ -8,7 +8,7 @@ def match_questions(
         model,
         form_df,
         conf_df,
-        threshold=0.75
+        threshold=0.80
 ):
 
     conf_embeddings = model.encode(
