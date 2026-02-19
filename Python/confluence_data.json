@@ -4,6 +4,11 @@
     "question_text": "NAICS Codes",
     "answer_text": "Inficon Inc.",
     "field_type": "text"
+  },{
+    "question_id": "Q1.5",
+    "question_text": "Company Name",
+    "answer_text": "Inficon Inc.",
+    "field_type": "text"
   },
   {
     "question_id": "Q2",

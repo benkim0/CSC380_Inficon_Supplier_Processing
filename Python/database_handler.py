@@ -16,6 +16,12 @@ def load_confluence_data(filepath):
         df["answer_text"]
         .str.strip()
     )
+
+    df["question_id"] = (
+        df["question_id"]
+        .str.strip()
+    )
+
     return df
 
 def load_form_data(filepath):
@@ -26,6 +32,11 @@ def load_form_data(filepath):
         df["question_text"]
         .str.strip()
         .str.lower()
+    )
+
+    df["form_question_id"] = (
+        df["form_question_id"]
+        .str.strip()
     )
 
     return df

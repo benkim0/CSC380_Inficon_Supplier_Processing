@@ -1,7 +1,7 @@
 from vector_embedding_model import load_embedding_model
 from Python.database_handler import load_form_data, load_confluence_data
 from similarity_test import match_questions
-
+from autofill_engine import autofill_form
 
 def main():
     model = load_embedding_model()
@@ -14,16 +14,17 @@ def main():
         threshold=0.80
     )
 
-    print("\nResults:\n")
+    form_fields = form_df.to_dict(orient="records")
 
-    for r in results:
-        print("Form Question:", r["form_question"])
-        print("Confluence Question:", r["confluence_question"])
-        print("Answer:", r["answer"])
-        print("Field Type:", r["field_type"])
-        print("Decision:", r["decision"])
-        print("Similarity:", round(r["similarity_score"], 3))
-        print()
+    autofilled_form = autofill_form(form_fields, results)
+
+    print("\nAutofilled Form:\n")
+    for f in autofilled_form:
+        print(f"Question ID: {f['form_question_id']}")
+        print(f"Question: {f['question_text']}")
+        print(f"Value: {f.get('value')}")
+        print(f"Status: {f['status']}")
+        print("")
 
 if __name__ == "__main__":
     main()
