@@ -1,17 +1,17 @@
 [
   {
     "form_question_id": "F1",
-    "question_text": "What is the Company Called?",
+    "question_text": "What is the name of the Company?",
     "field_type": "text"
   },
   {
     "form_question_id": "F2",
-    "question_text": "What is the Address?",
+    "question_text": "How is the company structured?",
     "field_type": "text"
   },
   {
     "form_question_id": "F3",
-    "question_text": "What City is the Company located in?",
+    "question_text": "How much manufacturing room does the company have?",
     "field_type": "text"
   },
   {
@@ -21,7 +21,7 @@
   },
   {
     "form_question_id": "F5",
-    "question_text": "Name of the CEO",
+    "question_text": "How old is the company?",
     "field_type": "text"
   },
   {
@@ -31,8 +31,38 @@
   },
   {
     "form_question_id": "F7",
-    "question_text": "Does this company sponsor visas?",
+    "question_text": "Is this a woman Owned Company?",
     "field_type": "checkbox"
+  },
+  {
+    "form_question_id": "F8",
+    "question_text": "Is this a native Owned Company?",
+    "field_type": "checkbox"
+  },
+  {
+    "form_question_id": "F9",
+    "question_text": "Is this a veteran Owned Company?",
+    "field_type": "checkbox"
+  },
+  {
+    "form_question_id": "F10",
+    "question_text": "How many employees does the company have?",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F11",
+    "question_text": "What is the breakdown of those employees?",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F12",
+    "question_text": "Who is the company's CEO",
+    "field_type": "text"
+  },
+  {
+    "form_question_id": "F13",
+    "question_text": "Is there any important shareholder information?",
+    "field_type": "text"
   }
 ]
 

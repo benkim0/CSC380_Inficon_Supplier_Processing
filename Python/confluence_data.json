@@ -1,62 +1,236 @@
 [
   {
     "question_id": "Q1",
-    "question_text": "What is the name of the Company",
+    "question_text": "NAICS Codes",
     "answer_text": "Inficon Inc.",
     "field_type": "text"
   },
   {
     "question_id": "Q2",
-    "question_text": "What is the Company Address",
-    "answer_text": "2 Technology Place",
+    "question_text": "Cage Code",
+    "answer_text": "56507",
     "field_type": "text"
   },
   {
     "question_id": "Q3",
-    "question_text": "What City is the Company in?",
-    "answer_text": "East Syracuse",
+    "question_text": "What state is the company in",
+    "answer_text": "Incorporated in Delaware",
     "field_type": "text"
   },
   {
     "question_id": "Q4",
-    "question_text": "What State is the Company in?",
-    "answer_text": "New York",
+    "question_text": "What is the ownership structure",
+    "answer_text": "INFICON Inc is a publily-traded, wholly owned subsidiary of INFICON Holding AG",
     "field_type": "text"
   },
   {
     "question_id": "Q5",
-    "question_text": "Are we a minority owned company?",
-    "answer_text": "No",
-    "field_type": "checkbox"
+    "question_text": "What Congressional District is your company in?",
+    "answer_text": "27th",
+    "field_type": "text"
   },
   {
     "question_id": "Q6",
-    "question_text": "What types of products do we sell?",
-    "answer_text": "Semiconductors, Batteries, etc.",
-    "field_type": "checkbox"
+    "question_text": "How much manufacturing space does your company have?",
+    "answer_text": "70,000 sq.ft. (6500m^2)",
+    "field_type": "text"
   },
   {
     "question_id": "Q7",
-    "question_text": "What is the Company Phone Number",
-    "answer_text": "315-111-1111",
+    "question_text": "How much office space does the company have?",
+    "answer_text": "100,000 sq. ft.",
     "field_type": "text"
   },
   {
     "question_id": "Q8",
-    "question_text": "Who is the Company CEO",
-    "answer_text": "Oliver Wyrsch",
+    "question_text": "How much clean room does the company have?",
+    "answer_text": "20,000 sq. ft. (1700m^2)",
     "field_type": "text"
   },
   {
     "question_id": "Q9",
-    "question_text": "Number of Employees",
-    "answer_text": "1,685",
+    "question_text": "How large is the total facility?",
+    "answer_text": "210,000 sq. ft. (19,500m^2)",
     "field_type": "text"
   },
   {
     "question_id": "Q10",
-    "question_text": "Sales Revenue",
-    "answer_text": "671,000,000",
+    "question_text": "What year was the company started/established?",
+    "answer_text": "1969",
     "field_type": "text"
+  },
+  {
+    "question_id": "Q11",
+    "question_text": "How many years has the company been in business?",
+    "answer_text": "51",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q12",
+    "question_text": "What was the parent company's sales in 2017",
+    "answer_text": "US$374M",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q13",
+    "question_text": "What was the parent company's sales in 2018",
+    "answer_text": "US$410M",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q14",
+    "question_text": "What was the parent company's sales in 2019",
+    "answer_text": "US$382M",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q15",
+    "question_text": "What was the subsidiary company's sales in 2017",
+    "answer_text": "US$143M",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q16",
+    "question_text": "What was the subsidiary company's sales in 2018",
+    "answer_text": "US$160M",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q17",
+    "question_text": "What was the subsidiary company's sales in 2019",
+    "answer_text": "US$144M",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q18",
+    "question_text": "Other Financial Results",
+    "answer_text": "",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q19",
+    "question_text": "What size company is this?",
+    "answer_text": "Inficon Inc. is classified as a large business",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q20",
+    "question_text": "Is this a minority owned company?",
+    "answer_text": "No",
+    "field_type": "checkbox"
+  },
+  {
+    "question_id": "Q21",
+    "question_text": "Is this company a hub zone?",
+    "answer_text": "No",
+    "field_type": "checkbox"
+  },
+  {
+    "question_id": "Q22",
+    "question_text": "Is this a veteran owned company",
+    "answer_text": "No",
+    "field_type": "checkbox"
+  },
+  {
+    "question_id": "Q23",
+    "question_text": "Is this a native owned company",
+    "answer_text": "No",
+    "field_type": "checkbox"
+  },
+  {
+    "question_id": "Q24",
+    "question_text": "Is this a woman owned company",
+    "answer_text": "No",
+    "field_type": "checkbox"
+  },
+  {
+    "question_id": "Q25",
+    "question_text": "What is the company's Market Exchange code?",
+    "answer_text": "SWX:IFC",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q26",
+    "question_text": "What is the company's Market Registration number?",
+    "answer_text": "#19.1158",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q27",
+    "question_text": "What is the company's VAT number?",
+    "answer_text": "Inficon Inc Syracuse does not have a VAT number",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q28",
+    "question_text": "What is the company's sales breakdown?",
+    "answer_text": "Government 8%, Commercial 30%, Other 62%",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q29",
+    "question_text": "What is the company's sales breakdown",
+    "answer_text": "Medical 2%, Aerospace 2%, Automotive 12%, Commercial 30%, other 54%",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q30",
+    "question_text": "What is the information on the Clean Room",
+    "answer_text": "Class ISO 7 (Class 10,000 per US FED STD 209E)",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q31",
+    "question_text": "How many employees does the company have?",
+    "answer_text": "281 On-Site Employees",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q32",
+    "question_text": "What is the breakdown of employees?",
+    "answer_text": "Office 155, Manufacturing 108, QA 2, Other 11; Direct 59, Indirect 222, Temp Direct 0, Temp Indirect 1; Sales & Marketing 68, Design Eng/R&D 62, Manufacturing 71, Manuf. Engineers 19, QC 5, Admin 26, Procurement 8, Service Support 22, Production 43, Order Services 6, Supply Chain 22, Other 11, Temp 2",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q33",
+    "question_text": "Who is on the Board of Directors?",
+    "answer_text": "https://ir.inficon.com/financial-information/annual-reports",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q34",
+    "question_text": "Company Shareholder Information?",
+    "answer_text": "https://ir.inficon.com/financial-information/annual-reports",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q35",
+    "question_text": "What is the company's tax code?",
+    "answer_text": "161591542",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q36",
+    "question_text": "What is the company's DUNS Number?",
+    "answer_text": "05-055-2082",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q37",
+    "question_text": "What is the company's SIC Code?",
+    "answer_text": "3823",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q38",
+    "question_text": "What is the company's Federal Employer ID/Tax ID/FIN?",
+    "answer_text": "16-159-1542",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q39",
+    "question_text": "Does this company supply 1099?",
+    "answer_text": "No",
+    "field_type": "checkbox"
   }
 ]

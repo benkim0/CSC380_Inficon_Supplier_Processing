@@ -21,10 +21,7 @@ def match_questions(
         normalize_embeddings=True
     )
 
-    similarity_matrix = cosine_similarity(
-        form_embeddings,
-        conf_embeddings
-    )
+    similarity_matrix = np.dot(form_embeddings, conf_embeddings.T)
 
     results = []
 
