@@ -1,8 +1,4 @@
-from locale import normalize
-
 import numpy as np
-from sentence_transformers.util import normalize_embeddings
-from sklearn.metrics.pairwise import cosine_similarity
 
 def match_questions(
         model,
@@ -45,7 +41,7 @@ def match_questions(
         field_type = row.get("field_type", "text")
 
         results.append({
-            "form_question": row["form_question_id"],
+            "form_question": row["question_text"],
             "confluence_question": matched_row["question_id"],
             "field_type": field_type,
             "answer": answer,

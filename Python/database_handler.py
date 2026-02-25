@@ -2,7 +2,7 @@ import pandas as pd
 
 #loading data from confluence
 def load_confluence_data(filepath):
-    df = pd.read_json(filepath)
+    df = pd.read_json(filepath, orient="records")
 
     #cleaning
     df["question_text"] = (
@@ -25,19 +25,11 @@ def load_confluence_data(filepath):
     return df
 
 def load_form_data(filepath):
-    df = pd.read_json(filepath)
+    df = pd.read_json(filepath, orient="records")
 
-    #cleaning
-    df["question_text"] = (
-        df["question_text"]
-        .str.strip()
-        .str.lower()
-    )
+    df = df.rename(columns={"form_question_id": "question_text"})
 
-    df["form_question_id"] = (
-        df["form_question_id"]
-        .str.strip()
-    )
+    df["question_text"] = df["question_text"].str.strip().str.lower()
 
     return df
 
