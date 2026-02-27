@@ -27,8 +27,6 @@ def load_confluence_data(filepath):
 def load_form_data(filepath):
     df = pd.read_json(filepath, orient="records")
 
-    df = df.rename(columns={"form_question_id": "question_text"})
-
     df["question_text"] = df["question_text"].str.strip().str.lower()
 
     return df
