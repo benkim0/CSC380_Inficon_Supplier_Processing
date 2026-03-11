@@ -1,32 +1,31 @@
 from pypdf import PdfReader, PdfWriter
 
-def fill_pdf_form(input_path, output_path, filled_fields, field_map):
+def autofill_pdf_form(input_path, output_path, form_fields, match_results, key="form_question_id"):
+    match_map = {m[key]: m for m in match_results if key in m}
     reader = PdfReader(input_path)
     writer = PdfWriter()
     writer.append_pages_from_reader(reader)
+    pdf_field_map = reader.get_fields() or {}
 
-    # Ensure proper AcroForm object
-    if "/AcroForm" in reader.trailer["/Root"]:
-        acro_form = reader.trailer["/Root"]["/AcroForm"].get_object()
-        writer._root_object.update({"/AcroForm": acro_form})
+    for field_name, pdf_field in pdf_field_map.items():
+        match = match_map.get(field_name)
+        if not match:
+            continue
 
-    field_updates = {}
-    for f in filled_fields:
-        pdf_field_name = field_map.get(f["form_question_id"])
-        value = f.get("value")
-        if pdf_field_name and value is not None:
-            if f.get("field_type") == "checkbox":
-                field_updates[pdf_field_name] = "/Yes" if str(value).lower() in ["yes", "true", "1"] else "/Off"
-            else:
-                field_updates[pdf_field_name] = str(value)
+        decision = match.get("decision")
+        answer = match.get("answer")
+        field_type = pdf_field.get("/FT")
 
-    if not field_updates:
-        print("No fields to update. Check your field_map and filled_fields.")
-        return
+        if decision == "autofill":
+            if field_type == "/Tx":
+                writer.update_page_form_field_values(reader.pages[0], {field_name: str(answer)})
+            elif field_type == "/Btn":
+                value = "/Yes" if answer else "/Off"
+                writer.update_page_form_field_values(reader.pages[0], {field_name: value})
 
-    writer.update_page_form_field_values(writer.pages, field_updates)
+        elif decision == "review suggested":
+            value = str(answer) if field_type == "/Tx" else ("/Yes" if answer else "/Off")
+            writer.update_page_form_field_values(reader.pages[0], {field_name: value})
 
     with open(output_path, "wb") as f:
         writer.write(f)
-
-    print(f"Filled PDF saved to {output_path}")
