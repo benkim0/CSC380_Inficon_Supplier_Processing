@@ -1,12 +1,14 @@
 import json
 import pandas as pd
-from Python.fill_pdf_form import autofill_pdf_form
+from fill_pdf_form import autofill_pdf_with_matches, extract_pdf_fields
 from similarity_test import match_questions
 from vector_embedding_model import load_embedding_model
 
 
 def main():
     model = load_embedding_model()
+
+    # Load your PDF and form/confluence data
     with open("form_data.json") as f:
         form_fields = json.load(f)
     with open("confluence_data.json") as f:
@@ -15,18 +17,18 @@ def main():
     form_df = pd.DataFrame(form_fields)
     conf_df = pd.DataFrame(confluence_data)
 
-    match_results = match_questions(model, form_df, conf_df, threshold=0.80)
+    # Run your embedding matcher
+    match_results = match_questions(model, form_df, conf_df, threshold=0.8)
 
-    autofill_results = []
-    for match in match_results:
-        autofill_results.append({
-            "form_question_id": match["form_question"],
-            "answer": match["answer"],
-            "decision": match["decision"],
-            "field_type": match["field_type"]
-        })
+    # Open PDF and extract fields
+    fields, pdf = extract_pdf_fields("toy_pdf.pdf")
 
-    autofill_pdf_form("toy_pdf.pdf", "output_pdf.pdf", form_fields, autofill_results, key="question_text")
+    # Fill the PDF using matches
+    filled_pdf = autofill_pdf_with_matches(pdf, fields, match_results, key="question_text")
+
+    # Save the final PDF
+    filled_pdf.save("output_pdf.pdf")
+    print("PDF saved as output_pdf.pdf")
 
 
 if __name__ == "__main__":

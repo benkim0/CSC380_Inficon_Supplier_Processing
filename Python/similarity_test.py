@@ -41,6 +41,7 @@ def match_questions(
         field_type = row.get("field_type", "text")
 
         results.append({
+            "form_question_id": row.get("form_question_id") or row.get("question_text"),
             "form_question": row["question_text"],
             "confluence_question": matched_row["question_id"],
             "field_type": field_type,
