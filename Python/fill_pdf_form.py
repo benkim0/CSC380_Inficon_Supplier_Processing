@@ -18,7 +18,6 @@ def extract_pdf_fields(pdf_path):
 
     field_list = []
     for f in fields:
-        print(f"Field Name: {f.field_name}, Rect: {f.rect}")
         field_list.append({
             "field_name": f.field_name,
             "rect": f.rect,
