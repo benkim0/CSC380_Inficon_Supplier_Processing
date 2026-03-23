@@ -5,47 +5,52 @@ def extract_pdf_fields(pdf_path):
     pdf = fitz.open(pdf_path)
     fields = []
 
-    if hasattr(pdf, "widgets") and pdf.widgets():
-        fields = pdf.widgets()
-    else:
-        for page in pdf:
-            if hasattr(page, "widgets") and page.widgets():
-                fields.extend(page.widgets())
+    for page_num, page in enumerate(pdf):
+        if hasattr(page, "widgets") and page.widgets():
+            for w in page.widgets():
+                if not w.field_name:
+                    continue
+                fields.append({
+                    "field_name": w.field_name,
+                    "rect": w.rect,
+                    "field_type": w.field_type.name if hasattr(w.field_type, "name") else str(w.field_type),
+                    "page_num": page_num
+                })
 
     if not fields:
-        print("No fields found in this pdf")
-        return []
-
-    field_list = []
-    for f in fields:
-        field_list.append({
-            "field_name": f.field_name,
-            "rect": f.rect,
-            "field_type": f.field_type.name if hasattr(f.field_type, "name") else str(f.field_type)
-        })
-    return field_list, pdf
+        print("No fields found in this PDF")
+    return fields, pdf
 
 
-def autofill_pdf_with_matches(pdf, fields, match_results, key="form_question_id"):
-    match_map = {m[key].lower(): m for m in match_results if key in m}
+def autofill_pdf(input_pdf_path, output_pdf_path, match_results):
+    pdf = fitz.open(input_pdf_path)
 
-    for page in pdf:
-        for widget in page.widgets():
-            field_name = widget.field_name
-            match = match_map.get(field_name.lower())
-            if not match:
-                continue
+    for match in match_results:
+        answer = match.get("answer")
+        rect = match.get("rect")
+        page_num = match.get("page_num", 0)
 
-            answer = match.get("answer")
-            if answer is None:
-                continue
+        if not answer or not rect:
+            continue
 
-            if widget.field_type.name == "Text":
-                widget.field_value = str(answer)
-                widget.update()
-            elif widget.field_type.name == "Button":
-                value = True if str(answer).lower() in ("yes", "true", "1") else False
-                widget.field_value = value
-                widget.update()
+        if rect.is_empty or rect.width == 0 or rect.height == 0:
+            rect = fitz.Rect(rect.x0, rect.y0, rect.x0 + 100, rect.y0 + 20)
 
-    return pdf
+        if str(answer).lower() in ("yes", "true", "1"):
+            text_to_insert = "✔"
+        elif str(answer).lower() in ("no", "false", "0"):
+            text_to_insert = "✗"
+        else:
+            text_to_insert = str(answer)
+
+        pdf[page_num].insert_textbox(
+            rect,
+            text_to_insert,
+            fontsize=11,
+            fontname="helv",
+            align=0,
+            color=(0, 0, 0)
+        )
+
+    pdf.save(output_pdf_path)
+    print(f"PDF saved as {output_pdf_path} (via text overlay)")
