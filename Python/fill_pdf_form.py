@@ -22,35 +22,29 @@ def extract_pdf_fields(pdf_path):
     return fields, pdf
 
 
-def autofill_pdf(input_pdf_path, output_pdf_path, match_results):
-    pdf = fitz.open(input_pdf_path)
+def autofill_pdf(pdf, fields, output_path):
+    for f in fields:
+        page = pdf[f["page_num"]]
+        rect = f["rect"]
 
-    for match in match_results:
-        answer = match.get("answer")
-        rect = match.get("rect")
-        page_num = match.get("page_num", 0)
-
-        if not answer or not rect:
-            continue
-
-        if rect.is_empty or rect.width == 0 or rect.height == 0:
-            rect = fitz.Rect(rect.x0, rect.y0, rect.x0 + 100, rect.y0 + 20)
-
-        if str(answer).lower() in ("yes", "true", "1"):
-            text_to_insert = "✔"
-        elif str(answer).lower() in ("no", "false", "0"):
-            text_to_insert = "✗"
+        if f["field_type"] == '2':
+            x = rect.x0
+            y = rect.y0 + 8
+            page.insert_text(
+                (x, y),
+                "x",
+                fontsize=10,
+                color=(0, 0, 0)
+            )
         else:
-            text_to_insert = str(answer)
+            x = rect.x0
+            y = rect.y0 + 8
+            page.insert_text(
+                (x, y),
+                f"TEST: {f['field_name']}",
+                fontsize=8,
+                color=(0, 0, 0)
+            )
 
-        pdf[page_num].insert_textbox(
-            rect,
-            text_to_insert,
-            fontsize=11,
-            fontname="helv",
-            align=0,
-            color=(0, 0, 0)
-        )
-
-    pdf.save(output_pdf_path)
-    print(f"PDF saved as {output_pdf_path} (via text overlay)")
+    pdf.save(output_path)
+    print(f"PDF saved as {output_path}")
