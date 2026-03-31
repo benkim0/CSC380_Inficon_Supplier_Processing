@@ -22,26 +22,49 @@ def extract_pdf_fields(pdf_path):
     return fields, pdf
 
 
-def autofill_pdf(pdf, fields, output_path):
+def autofill_pdf(pdf, fields, match_results, output_path):
+    match_lookup = {m.get("form_question"): m for m in match_results}
     for f in fields:
+        field_name = f["field_name"]
         page = pdf[f["page_num"]]
         rect = f["rect"]
+        match = match_lookup.get(field_name)
+
+        if not match:
+            continue
+
+        decision = match.get("decision", "").lower()
+
+        if decision not in ["autofill", "review suggested"]:
+            continue
+
+        text_to_insert = str(match.get("answer", ""))
+
+        if decision == "review suggested":
+            highlight_rect = fitz.Rect(rect.x0, rect.y0, rect.x1, rect.y1)
+            page.draw_rect(
+                highlight_rect,
+                color=(1, 1, 0),
+                fill=(1, 1, 0),
+                overlay=True
+            )
 
         if f["field_type"] == '2':
             x = rect.x0
             y = rect.y0 + 8
-            page.insert_text(
-                (x, y),
-                "x",
-                fontsize=10,
-                color=(0, 0, 0)
-            )
+            if text_to_insert.lower() in ["yes", "true", "1", "x"]:
+                page.insert_text(
+                    (x, y),
+                    "x",
+                    fontsize=10,
+                    color=(0, 0, 0)
+                )
         else:
             x = rect.x0
             y = rect.y0 + 8
             page.insert_text(
                 (x, y),
-                f"TEST: {f['field_name']}",
+                text_to_insert,
                 fontsize=8,
                 color=(0, 0, 0)
             )
