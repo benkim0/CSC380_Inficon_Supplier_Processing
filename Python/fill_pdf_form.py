@@ -35,19 +35,18 @@ def autofill_pdf(pdf, fields, match_results, output_path):
 
         decision = match.get("decision", "").lower()
 
-        if decision not in ["autofill", "review suggested"]:
+        if decision not in ["autofill"]:
             continue
 
         text_to_insert = str(match.get("answer", ""))
 
-        if decision == "review suggested":
-            highlight_rect = fitz.Rect(rect.x0, rect.y0, rect.x1, rect.y1)
-            page.draw_rect(
-                highlight_rect,
-                color=(1, 1, 0),
-                fill=(1, 1, 0),
-                overlay=True
-            )
+        # if decision == "review suggested":
+        #     highlight_rect = fitz.Rect(rect.x0, rect.y0, rect.x1, rect.y1)
+        #
+        #     annot = page.add_rect_annot(highlight_rect)
+        #     annot.set_colors(stroke=(1, 1, 0), fill=(1, 1, 0))
+        #     annot.set_opacity(0.3)
+        #     annot.update()
 
         if f["field_type"] == '2':
             x = rect.x0
@@ -66,7 +65,7 @@ def autofill_pdf(pdf, fields, match_results, output_path):
                 (x, y),
                 text_to_insert,
                 fontsize=8,
-                color=(0, 0, 0)
+                color=(0, 0, 0),
             )
 
     pdf.save(output_path)

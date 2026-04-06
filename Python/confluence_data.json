@@ -13,8 +13,8 @@
   },
   {
     "question_id": "Q3",
-    "question_text": "Street Address",
-    "answer_text": "Inficon Inc.",
+    "question_text": "Subsidary of",
+    "answer_text": "INFICON Holding AG",
     "field_type": "text"
   },
   {
@@ -49,8 +49,32 @@
   },
   {
     "question_id": "Q9",
-    "question_text": "NAICS Codes",
-    "answer_text": "",
+    "question_text": "NAICS Codes 1",
+    "answer_text": "334513",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q9.1",
+    "question_text": "NAICS Codes 2",
+    "answer_text": "334515",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q9.2",
+    "question_text": "NAICS Codes 3",
+    "answer_text": "334516",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q9.3",
+    "question_text": "NAICS Codes 4",
+    "answer_text": "333200",
+    "field_type": "text"
+  },
+  {
+    "question_id": "Q9.4",
+    "question_text": "NAICS Codes 5",
+    "answer_text": "532490",
     "field_type": "text"
   },
   {
@@ -242,7 +266,7 @@
   {
     "question_id": "Q41",
     "question_text": "On-Site Employee Count",
-    "answer_text": "281 On-Site Employees",
+    "answer_text": "281 On-Site",
     "field_type": "text"
   },
   {
