@@ -1,6 +1,5 @@
 import json
 import pandas as pd
-from torch.ao.nn.quantized.functional import threshold
 
 from Python.fill_docx_form import autofill_docx
 from fill_docx_form import extract_docx_fields
@@ -15,7 +14,7 @@ def main():
         confluence_data = json.load(f)
 
     conf_df = pd.DataFrame(confluence_data)
-    pdf_fields, pdf = extract_pdf_fields("toy_pdf.pdf")
+    pdf_fields, pdf = extract_pdf_fields("toy_pdf5.pdf")
     pdf_df = pd.DataFrame([
         {
             "question_text": f["field_name"].strip().lower(),
@@ -24,7 +23,7 @@ def main():
         for f in pdf_fields
     ])
     pdf_match_results = match_questions(model, pdf_df, conf_df, threshold=0.8)
-    autofill_pdf(pdf, pdf_fields, pdf_match_results, "output_pdf.pdf")
+    autofill_pdf(pdf, pdf_fields, pdf_match_results, "output_pdf5.pdf")
     #
     # doc_fields, doc = extract_docx_fields("toy_pdf.docx")
     # docx_df = pd.DataFrame([

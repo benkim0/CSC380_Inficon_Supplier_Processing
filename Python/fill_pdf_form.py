@@ -60,7 +60,7 @@ def autofill_pdf(pdf, fields, match_results, output_path):
                 )
         else:
             x = rect.x0
-            y = rect.y0 + 8
+            y = rect.y0 + 10
             page.insert_text(
                 (x, y),
                 text_to_insert,
