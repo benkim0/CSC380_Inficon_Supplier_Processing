@@ -14,7 +14,7 @@ def main():
         confluence_data = json.load(f)
 
     conf_df = pd.DataFrame(confluence_data)
-    pdf_fields, pdf = extract_pdf_fields("toy_pdf5.pdf")
+    pdf_fields, pdf = extract_pdf_fields("toy_pdf.pdf")
     pdf_df = pd.DataFrame([
         {
             "question_text": f["field_name"].strip().lower(),
@@ -23,18 +23,18 @@ def main():
         for f in pdf_fields
     ])
     pdf_match_results = match_questions(model, pdf_df, conf_df, threshold=0.8)
-    autofill_pdf(pdf, pdf_fields, pdf_match_results, "output_pdf5.pdf")
-    #
-    # doc_fields, doc = extract_docx_fields("toy_pdf.docx")
-    # docx_df = pd.DataFrame([
-    #     {
-    #         "question_text": f["field_name"].strip().lower(),
-    #         "field_name": f["field_name"]
-    #     }
-    #     for f in doc_fields
-    # ])
-    # doc_match_results = match_questions(model, docx_df, conf_df, threshold=0.8)
-    # autofill_docx(doc, doc_fields, doc_match_results, "output_doc.docx")
+    autofill_pdf(pdf, pdf_fields, pdf_match_results, "output_pdf.pdf")
+
+    doc_fields, doc = extract_docx_fields("toy_pdf.docx")
+    docx_df = pd.DataFrame([
+        {
+            "question_text": f["field_name"].strip().lower(),
+            "field_name": f["field_name"]
+        }
+        for f in doc_fields
+    ])
+    doc_match_results = match_questions(model, docx_df, conf_df, threshold=0.8)
+    autofill_docx("toy_pdf.docx", doc_fields, doc_match_results, "output_doc.docx")
 
 if __name__ == "__main__":
     main()

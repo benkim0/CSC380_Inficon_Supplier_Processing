@@ -40,14 +40,6 @@ def autofill_pdf(pdf, fields, match_results, output_path):
 
         text_to_insert = str(match.get("answer", ""))
 
-        # if decision == "review suggested":
-        #     highlight_rect = fitz.Rect(rect.x0, rect.y0, rect.x1, rect.y1)
-        #
-        #     annot = page.add_rect_annot(highlight_rect)
-        #     annot.set_colors(stroke=(1, 1, 0), fill=(1, 1, 0))
-        #     annot.set_opacity(0.3)
-        #     annot.update()
-
         if f["field_type"] == '2':
             x = rect.x0
             y = rect.y0 + 8
