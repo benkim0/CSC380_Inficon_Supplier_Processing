@@ -49,7 +49,7 @@ public class TestGUI1_cseda {
                 public void actionPerformed(ActionEvent e) {
 
                     for(File file : inputFiles){
-                        ProcessBuilder pBuilder = new ProcessBuilder("C:\\Users\\super\\AppData\\Local\\Programs\\Python\\Python314\\python.exe", "C:\\Users\\super\\ForFunsies\\CSC380_Inficon_Supplier_Processing\\Python\\main.py",file.getAbsolutePath());
+                        ProcessBuilder pBuilder = new ProcessBuilder("C:\\Users\\super\\AppData\\Local\\Programs\\Python\\Python314\\python.exe", "C:\\Users\\super\\ForFunsies\\CSC380_Inficon_Supplier_Processing\\Python\\guitest.py",file.getAbsolutePath());
                         pBuilder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
 
                         try {
