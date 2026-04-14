@@ -10,6 +10,7 @@ from vector_embedding_model import load_embedding_model
 
 
 def main():
+    print("working")
     model = load_embedding_model()
     with open("C:\\Users\\super\\ForFunsies\\CSC380_Inficon_Supplier_Processing\\Python\\confluence_data.json") as f:
         confluence_data = json.load(f)
